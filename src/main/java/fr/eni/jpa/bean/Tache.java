@@ -1,6 +1,7 @@
 package fr.eni.jpa.bean;
 
 import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -59,7 +60,7 @@ public class Tache {
     }
 
     public void setetat(Boolean etat) {
-        etat = etat;
+        this.etat = etat;
     }
 
     public List<Categorie> getCategories() {
@@ -68,5 +69,16 @@ public class Tache {
 
     public void setCategories(List<Categorie> categories) {
         this.categories = categories;
+    }
+
+    @Override
+    public String toString() {
+        return "Tache{" +
+                "id=" + id +
+                ", date=" + date +
+                ", description='" + description + '\'' +
+                ", etat=" + etat +
+                ", categories=" + categories +
+                '}';
     }
 }

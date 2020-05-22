@@ -78,4 +78,17 @@ public class Utilisateur {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	@Override
+	public String toString() {
+		return "Utilisateur{" +
+				"id=" + id +
+				", nom='" + nom + '\'' +
+				", prenom='" + prenom + '\'' +
+				", idConnexion='" + idConnexion + '\'' +
+				", password='" + password + '\'' +
+				", taches=" + taches +
+				", categories=" + categories +
+				'}';
+	}
 }

@@ -11,7 +11,7 @@ public class GestionTache {
     GenericDao<Tache, Integer> dao;
 
     public GestionTache() {
-        new GenericDaoImpl<>();
+        dao = new GenericDaoImpl<>();
     }
 
     public List<Tache> listeTaches() {
