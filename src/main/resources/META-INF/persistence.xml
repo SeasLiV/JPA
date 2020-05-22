@@ -5,6 +5,10 @@
 
     <persistence-unit name="Mysql_UP" transaction-type="RESOURCE_LOCAL">
 
+        <class>fr.eni.jpa.bean.Utilisateur</class>
+        <class>fr.eni.jpa.bean.Categorie</class>
+        <class>fr.eni.jpa.bean.Tache</class>
+
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/todo"/>

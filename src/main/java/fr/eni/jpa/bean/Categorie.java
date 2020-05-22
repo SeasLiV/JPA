@@ -10,7 +10,7 @@ public class Categorie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private int id;
     private String libelle;
 
     public Categorie() {
@@ -21,11 +21,11 @@ public class Categorie {
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getLibelle() {

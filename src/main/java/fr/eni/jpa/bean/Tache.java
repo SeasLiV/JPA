@@ -12,7 +12,7 @@ public class Tache {
     private int id;
     private Date date;
     private String description;
-    private Boolean Etat;
+    private Boolean etat;
 
     @ManyToMany
     @JoinTable(name = "TacheCategorie",
@@ -26,7 +26,7 @@ public class Tache {
     public Tache(Date date, String description, Boolean etat, List<Categorie> categories) {
         this.date = date;
         this.description = description;
-        Etat = etat;
+        this.etat = etat;
         this.categories = categories;
     }
 
@@ -54,12 +54,12 @@ public class Tache {
         this.description = description;
     }
 
-    public Boolean getEtat() {
-        return Etat;
+    public Boolean getetat() {
+        return etat;
     }
 
-    public void setEtat(Boolean etat) {
-        Etat = etat;
+    public void setetat(Boolean etat) {
+        etat = etat;
     }
 
     public List<Categorie> getCategories() {
