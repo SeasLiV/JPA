@@ -38,9 +38,9 @@ public class GestionCategorie {
         dao.delete(trouverCategorie(id));
     }
 
-    public List<Categorie> trier(String par) {
-        List<Categorie> liste = null;
-        liste = dao.findAll(Categorie.class);
-        return liste;
-    }
+//    public List<Categorie> trier(String par) {
+//        List<Categorie> liste = null;
+//        liste = dao.findAll(Categorie.class);
+//        return liste;
+//    }
 }

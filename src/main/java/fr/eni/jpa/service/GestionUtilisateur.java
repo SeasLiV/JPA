@@ -39,9 +39,9 @@ public class GestionUtilisateur {
         dao.delete(trouverUtilisateur(id));
     }
 
-    public List<Utilisateur> trier(String par) {
-        List<Utilisateur> liste = null;
-        liste = dao.findAll(Utilisateur.class);
-        return liste;
-    }
+//    public List<Utilisateur> trier(String par) {
+//        List<Utilisateur> liste = null;
+//        liste = dao.findAll(Utilisateur.class);
+//        return liste;
+//    }
 }
