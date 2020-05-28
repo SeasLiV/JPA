@@ -19,7 +19,7 @@ public class ServletLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         GestionUtilisateur gestionUtilisateur = new GestionUtilisateur();
         Utilisateur utilisateur = new Utilisateur();
-        String idConnexion = request.getParameter("ÏdConnexion");
+        String idConnexion = request.getParameter("IdConnexion");
         String password = request.getParameter("Password");
         utilisateur = gestionUtilisateur.login(idConnexion, password);
         String bddPseudo = utilisateur.getIdConnexion();
