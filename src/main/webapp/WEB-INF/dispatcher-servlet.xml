@@ -30,7 +30,7 @@
     </bean>
 
 
-    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
     <jpa:repositories base-package="fr.eni.jpa.dao"
                       entity-manager-factory-ref="emf"/>

@@ -3,7 +3,6 @@ package fr.eni.jpa.main;
 import fr.eni.jpa.bean.Categorie;
 import fr.eni.jpa.bean.Tache;
 import fr.eni.jpa.bean.Utilisateur;
-import fr.eni.jpa.dao.DAOUtil;
 import fr.eni.jpa.service.GestionCategorie;
 import fr.eni.jpa.service.GestionTache;
 import fr.eni.jpa.service.GestionUtilisateur;
