@@ -1,5 +1,7 @@
 package fr.eni.jpa.bean;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +13,8 @@ public class Categorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @NotBlank
     private String libelle;
 
     public Categorie() {

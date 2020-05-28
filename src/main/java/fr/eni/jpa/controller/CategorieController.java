@@ -4,10 +4,13 @@ import fr.eni.jpa.bean.Categorie;
 import fr.eni.jpa.service.GestionCategorie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -20,6 +23,7 @@ public class CategorieController {
     public ModelAndView listerCategories() {
         List<Categorie> listC = gc.listerCategories();
         Categorie cat = new Categorie();
+        //TODO: if(listC.size() == 0) ajouter un attribut pour message liste catégorie vide
         ModelAndView mav = new ModelAndView("listeCategories", "listeC", listC);
         mav.getModelMap().addAttribute("cat", cat);
         return mav;
@@ -32,8 +36,13 @@ public class CategorieController {
     }
 
     @RequestMapping(value = "/ajouterCategorie", method = RequestMethod.POST)
-    public ModelAndView ajouterCategorie(Categorie cat) {
-        gc.ajoutCategorie(cat);
+    public ModelAndView ajouterCategorie(@Valid @ModelAttribute("cat") Categorie cat, BindingResult result) {
+        if(result.hasErrors()) {
+            return listerCategories();
+        } else {
+            gc.ajoutCategorie(cat);
+            //TODO: placer le 2eme return ici et pointer vers la liste des tâches
+        }
         return listerCategories();
     }
 
@@ -43,7 +52,7 @@ public class CategorieController {
         gc.supprimerCategorie(i);
         return listerCategories();
     }
-//
+
 //    @RequestMapping(value = "/supprimerCategorie", method = RequestMethod.GET)
 //    public ModelAndView supprimerCategorie(Categorie c) {
 //        gc.supprimerCategorie(c);

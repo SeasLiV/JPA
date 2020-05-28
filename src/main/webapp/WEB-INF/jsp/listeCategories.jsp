@@ -23,11 +23,10 @@
                     <td><input type="text" name="libelle" value="${c.libelle}" /></td>
                     <td class="centre">
                         <button type="submit" class="glyphicon glyphicon-edit vert"></button>
-
                     </td>
                     <td class="centre">
                         <a href="supprimerCategorie?index=c${c.id}">
-                            <span class="glyphicon glyphicon-remove rouge" id="s${c.id}"></span>
+                            <span class="glyphicon glyphicon-remove rouge" id="c${c.id}"></span>
                         </a>
                     </td>
                 </tr>
@@ -39,11 +38,15 @@
     <h2 class="bleu">Nouvelle catégorie :</h2>
     <div>
         <form:form action="ajouterCategorie" method="POST"
-                   cssClass="form-horizontal" modelAttribute="cat">
+                   cssClass="form-horizontal" commandName="cat">
             <div class="form-group">
-                <div class="col-xs-10">
+                <div class="col-xs-8">
                     <form:input path="libelle" placeholder="Libellé de la catégorie ..."
                                 cssClass="form-control" />
+                </div>
+                <div class="col-xs-2">
+                    <form:errors path="libelle"
+                                cssClass="error" />
                 </div>
                 <div class="col-xs-2">
                     <button type="submit" class="btn btn-primary pull-right">Envoyer</button>
