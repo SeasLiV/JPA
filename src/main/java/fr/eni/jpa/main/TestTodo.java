@@ -66,7 +66,7 @@ public class TestTodo {
             e.printStackTrace();
         }
 
-        System.out.println("Liste catégories : " + gc.listeCategorie());
+        System.out.println("Liste catégories : " + gc.listerCategories());
 
         c1.setLibelle("c1 updated");
         try {
@@ -84,7 +84,7 @@ public class TestTodo {
         listCategorie.add(c2);
 
         System.out.println("Liste après CRUD:");
-        System.out.println(gc.listeCategorie());
+        System.out.println(gc.listerCategories());
 
         System.out.println(" ----- Tâche ----- ");
 
@@ -124,7 +124,6 @@ public class TestTodo {
         System.out.println(gt.listeTaches());
         System.out.println(gu.listeUtilisateur());
 
-        DAOUtil.close();
     }
 
     private static void afficherUsers(String msg, List<Utilisateur> liste) {

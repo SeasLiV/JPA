@@ -24,10 +24,9 @@
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="#">Accueil</a></li>
-                <li><a href="app/lister">Liste des films</a></li>
-                <li><a href="app/ajouter">Ajouter un film</a></li>
-                <li><a href="app/listerStyle">Styles</a></li>
-                <li><a href="geo.jsp">Qui sommes-nous</a></li>
+                <li><a href="app/lister">Liste des Tâches</a></li>
+                <li><a href="app/ajouter">Ajouter une tâche</a></li>
+                <li><a href="app/listerCategories">Catégories</a></li>
             </ul>
         </div>
     </div>
