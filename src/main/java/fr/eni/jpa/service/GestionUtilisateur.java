@@ -1,41 +1,40 @@
 package fr.eni.jpa.service;
 
 import fr.eni.jpa.bean.Utilisateur;
-import fr.eni.jpa.dao.GenericDao;
-import fr.eni.jpa.dao.GenericDaoImpl;
+import fr.eni.jpa.dao.UtilisateurDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GestionUtilisateur {
 
-    GenericDao<Utilisateur, Integer> dao;
-
-    public GestionUtilisateur() {
-        dao = new GenericDaoImpl<>();
-    }
+    @Autowired
+    UtilisateurDAO dao;
 
     public List<Utilisateur> listeUtilisateur() {
-        return dao.findAll(Utilisateur.class);
+        return dao.findAll();
     }
 
     public Utilisateur trouverUtilisateur(int id) {
-        return dao.findById(Utilisateur.class, id);
+        return dao.findOne(id);
     }
 
 
-    public void ajoutUtilisateur(Utilisateur u) throws Exception {
-        dao.add(u);
+    public void ajoutUtilisateur(Utilisateur u) {
+        dao.save(u);
     }
 
-    public void modifierUtilisateur(Utilisateur u) throws Exception {
-        dao.update(u);
+    public void modifierUtilisateur(Utilisateur u) {
+        dao.save(u);
     }
 
-    public void supprimerUtilisateur(Utilisateur u) throws Exception {
+    public void supprimerUtilisateur(Utilisateur u) {
         dao.delete(u);
     }
 
-    public void supprimerUtilisateur(int id) throws Exception {
+    public void supprimerUtilisateur(int id) {
         dao.delete(trouverUtilisateur(id));
     }
 

@@ -29,16 +29,13 @@
     </bean>
 
 
-
-
-
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
     <jpa:repositories base-package="fr.eni.jpa.dao"
                       entity-manager-factory-ref="emf"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="/webapp/WEB-INFWEB-INF/datasource.properties"></property>
+        <property name="location" value="/WEB-INF/datasource.properties"></property>
     </bean>
 
     <bean id="datasource" class="org.apache.commons.dbcp2.BasicDataSource"

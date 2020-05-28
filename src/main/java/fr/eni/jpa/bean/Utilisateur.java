@@ -11,6 +11,7 @@ public class Utilisateur {
 	private int id;
 	private String nom;
 	private String prenom;
+	@Column(unique=true)
 	private String idConnexion;
 	private String password;
 
