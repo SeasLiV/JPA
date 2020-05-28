@@ -124,7 +124,6 @@ public class TestTodo {
         System.out.println(gt.listeTaches());
         System.out.println(gu.listeUtilisateur());
 
-        DAOUtil.close();
     }
 
     private static void afficherUsers(String msg, List<Utilisateur> liste) {
