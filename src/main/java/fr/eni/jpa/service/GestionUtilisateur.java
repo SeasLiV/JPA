@@ -38,6 +38,9 @@ public class GestionUtilisateur {
         dao.delete(trouverUtilisateur(id));
     }
 
+    public Utilisateur login(String idConnexion, String password) {
+        return dao.findByIdConnexionAndPassword(idConnexion, password);
+    }
 //    public List<Utilisateur> trier(String par) {
 //        List<Utilisateur> liste = null;
 //        liste = dao.findAll(Utilisateur.class);
