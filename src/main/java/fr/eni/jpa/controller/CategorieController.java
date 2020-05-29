@@ -19,6 +19,9 @@ public class CategorieController {
     @Autowired
     GestionCategorie gc;
 
+    @Autowired
+    TacheController tc;
+
     @RequestMapping(path = "/listerCategories", method = RequestMethod.GET)
     public ModelAndView listerCategories() {
         List<Categorie> listC = gc.listerCategories();
@@ -40,9 +43,8 @@ public class CategorieController {
             return listerCategories();
         } else {
             gc.ajoutCategorie(cat);
-            //TODO: placer le 2eme return ici et pointer vers la liste des tâches
+            return tc.listerTaches();
         }
-        return listerCategories();
     }
 
     @RequestMapping(value = "/supprimerCategorie", method = RequestMethod.GET)
