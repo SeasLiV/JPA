@@ -23,7 +23,6 @@ public class CategorieController {
     public ModelAndView listerCategories() {
         List<Categorie> listC = gc.listerCategories();
         Categorie cat = new Categorie();
-        //TODO: if(listC.size() == 0) ajouter un attribut pour message liste catégorie vide
         ModelAndView mav = new ModelAndView("listeCategories", "listeC", listC);
         mav.getModelMap().addAttribute("cat", cat);
         return mav;

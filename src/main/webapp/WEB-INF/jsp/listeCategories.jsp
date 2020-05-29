@@ -11,29 +11,58 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a  href="index.jsp" class="navbar-brand active">
+                <span class="glyphicon glyphicon-pencil"></span>
+                <span class="glyphicon glyphicon-ok"></span>
+            </a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.jsp">Accueil</a></li>
+                <li><a href="listerTaches">Liste des Tâches</a></li>
+                <li><a href="ajouterTache">Ajouter une tâche</a></li>
+                <li class="active"><a href="listerCategories">Catégories</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container">
     <h1 class="bleu">Gestion des Catégories</h1>
     <br>
-    <table class="table table-hover table-striped">
-        <c:forEach items="${listeC}" var="c" varStatus="bStatus">
-            <form action="modifCategorie" method="Post">
-                <tr>
-                    <input type="hidden" name="id" value="${c.id}" />
-                    <td>${c.id}</td>
-                    <td><input type="text" name="libelle" value="${c.libelle}" /></td>
-                    <td class="centre">
-                        <button type="submit" class="glyphicon glyphicon-edit vert"></button>
-                    </td>
-                    <td class="centre">
-                        <a href="supprimerCategorie?index=c${c.id}">
-                            <span class="glyphicon glyphicon-remove rouge" id="c${c.id}"></span>
-                        </a>
-                    </td>
-                </tr>
-            </form>
-        </c:forEach>
-    </table>
-
+    <c:choose>
+        <c:when test="${listeC.size() == 0}">
+            <h3>Liste des carégories vide !</h3>
+        </c:when>
+        <c:otherwise>
+            <table class="table table-hover table-striped">
+                <c:forEach items="${listeC}" var="c" varStatus="bStatus">
+                    <form action="modifCategorie" method="Post">
+                        <tr>
+                            <input type="hidden" name="id" value="${c.id}" />
+                            <td>${c.id}</td>
+                            <td><input type="text" name="libelle" value="${c.libelle}" /></td>
+                            <td class="centre">
+                                <button type="submit" class="glyphicon glyphicon-edit vert"></button>
+                            </td>
+                            <td class="centre">
+                                <a href="supprimerCategorie?index=c${c.id}">
+                                    <span class="glyphicon glyphicon-remove rouge" id="c${c.id}"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    </form>
+                </c:forEach>
+            </table>
+        </c:otherwise>
+    </c:choose>
     <br><br><br>
     <h2 class="bleu">Nouvelle catégorie :</h2>
     <div>

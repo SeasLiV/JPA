@@ -98,7 +98,7 @@ public class TestTodo {
             e.printStackTrace();
         }
 
-        System.out.println("Liste tâches: " + gt.listeTaches());
+        System.out.println("Liste tâches: " + gt.listerTaches());
         try {
             gt.supprimerTache(t2);
         } catch (Exception e) {
@@ -113,7 +113,7 @@ public class TestTodo {
         }
 
         Tache tacheToUpadte = gt.trouverTache(1);
-        tacheToUpadte.setetat(true);
+        tacheToUpadte.setEtat(true);
         try {
             gt.modifierTache(tacheToUpadte);
         } catch (Exception e) {
@@ -121,7 +121,7 @@ public class TestTodo {
         }
 
         System.out.println("Liste après taches et users après CRUD");
-        System.out.println(gt.listeTaches());
+        System.out.println(gt.listerTaches());
         System.out.println(gu.listeUtilisateur());
 
     }
