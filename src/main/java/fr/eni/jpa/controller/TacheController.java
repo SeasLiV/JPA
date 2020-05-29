@@ -29,7 +29,6 @@ public class TacheController {
     @RequestMapping(path = "/listerTaches", method = RequestMethod.GET)
     public ModelAndView listerTaches() {
         List<Tache> listeT = gt.listerTaches();
-        //TODO: if(listT.size() == 0) ajouter un attribut pour message liste Taches vide
         return new ModelAndView("listeTaches", "listeT", listeT);
     }
 
@@ -44,7 +43,6 @@ public class TacheController {
 
     @RequestMapping(value="/ajouterValid", method=RequestMethod.POST)
     public ModelAndView ajoutTacheValid(@Valid @ModelAttribute("tache") Tache tache, BindingResult result){
-        System.out.println(tache);
         if(result.hasErrors()) {
             return ajouterTache();
         } else {
@@ -55,7 +53,7 @@ public class TacheController {
 
     @RequestMapping(value="/changerEtat", method=RequestMethod.GET)
     public ModelAndView changerEtat(String index){
-        //TODO: Custom query plutôt que find + set + save ?
+        //TODO: Custom @Query plutôt que find + set + save ?
         int id = Integer.parseInt(index.substring(1));
         Tache tache = gt.trouverTache(id);
         tache.setEtat(!tache.getEtat());

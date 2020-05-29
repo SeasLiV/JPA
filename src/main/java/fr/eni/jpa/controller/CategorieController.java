@@ -53,10 +53,4 @@ public class CategorieController {
         gc.supprimerCategorie(i);
         return listerCategories();
     }
-
-//    @RequestMapping(value = "/supprimerCategorie", method = RequestMethod.GET)
-//    public ModelAndView supprimerCategorie(Categorie c) {
-//        gc.supprimerCategorie(c);
-//        return listerCategories();
-//    }
 }
