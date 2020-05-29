@@ -38,7 +38,7 @@ public class LoginController {
             return login();
         } else if (user.getPassword().compareTo(utilisateur.getPassword()) == 0) {
             gestionUtilisateur.setLoggedUser(user);
-            return new ModelAndView("listeTaches");
+            return new ModelAndView("redirect:listerTaches");
         } else {
             return login();
         }
