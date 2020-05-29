@@ -34,9 +34,7 @@
         </div>
     </div>
 </nav>
-<h1>ici</h1>
 <p>${loggedUser}</p>
-<h1>ici</h1>
 <div class="container">
     <h1 class="bleu">Liste des Tâches</h1>
     <br><br>
