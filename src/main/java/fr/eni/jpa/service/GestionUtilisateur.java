@@ -12,15 +12,15 @@ public class GestionUtilisateur {
 
     @Autowired
     UtilisateurDAO dao;
-
-    public List<Utilisateur> listeUtilisateur() {
-        return dao.findAll();
-    }
+    Utilisateur loggedUser = new Utilisateur();
 
     public Utilisateur trouverUtilisateur(int id) {
         return dao.findOne(id);
     }
 
+    public List<Utilisateur> listeUtilisateur() {
+        return dao.findAll();
+    }
 
     public void ajoutUtilisateur(Utilisateur u) {
         dao.save(u);
@@ -38,12 +38,19 @@ public class GestionUtilisateur {
         dao.delete(trouverUtilisateur(id));
     }
 
-    public Utilisateur login(String idConnexion, String password) {
-        return dao.findByIdConnexionAndPassword(idConnexion, password);
+    public Utilisateur getUserByLogin(Utilisateur utilisateur) {
+        return dao.findByIdConnexion(utilisateur.getIdConnexion());
     }
-//    public List<Utilisateur> trier(String par) {
-//        List<Utilisateur> liste = null;
-//        liste = dao.findAll(Utilisateur.class);
-//        return liste;
-//    }
+
+    public Utilisateur getLoggedUser() {
+        return this.loggedUser;
+    }
+
+    public void setLoggedUser(Utilisateur utilisateur) {
+        this.loggedUser = utilisateur;
+    }
+
+    public void disconnectedUser() {
+        this.loggedUser = new Utilisateur();
+    }
 }

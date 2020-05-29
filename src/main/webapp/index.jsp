@@ -11,7 +11,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a  href="index.jsp" class="navbar-brand active">
+            <a href="index.jsp" class="navbar-brand active">
                 <span class="glyphicon glyphicon-film"></span>
                 <span class="glyphicon glyphicon-film"></span>
             </a>
@@ -28,9 +28,11 @@
                 <li><a href="app/ajouter">Ajouter un film</a></li>
                 <li><a href="app/listerStyle">Styles</a></li>
                 <li><a href="geo.jsp">Qui sommes-nous</a></li>
+                <li><a href="login.jsp">LOGIN</a></li>
             </ul>
         </div>
     </div>
 </nav>
+<p><a href="app/login"></a>Lien vers app/login</p>
 </body>
 </html>
