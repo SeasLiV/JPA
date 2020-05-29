@@ -14,12 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.PostConstruct;
 
 @Controller
-//@SessionAttributes({"loggedUser"})
-@SessionAttributes(value = "loggedUser", types = {Utilisateur.class})
 public class LoginController {
 
     @Autowired
     GestionUtilisateur gestionUtilisateur;
+
+    @Autowired
+    TacheController tc;
 
     @PostConstruct
     private void init() {
@@ -32,13 +33,14 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
-    public ModelAndView loginCheck(Utilisateur utilisateur) {
+    public ModelAndView loginCheck(Utilisateur utilisateur, Model model) {
         Utilisateur user = gestionUtilisateur.getUserByLogin(utilisateur);
         if (user == null) {
             return login();
         } else if (user.getPassword().compareTo(utilisateur.getPassword()) == 0) {
             gestionUtilisateur.setLoggedUser(user);
-            return new ModelAndView("redirect:listerTaches");
+            model.addAttribute("loggedUser", user);
+            return tc.listerTaches();
         } else {
             return login();
         }
