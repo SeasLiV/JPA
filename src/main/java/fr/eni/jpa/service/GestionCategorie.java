@@ -13,7 +13,10 @@ public class GestionCategorie {
     @Autowired
     CategorieDAO dao;
 
-    public List<Categorie> listeCategorie() {
+    //
+    //TODO: catégories par rapport au user
+    //
+    public List<Categorie> listerCategories() {
         return dao.findAll();
     }
 

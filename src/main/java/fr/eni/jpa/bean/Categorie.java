@@ -1,9 +1,9 @@
 package fr.eni.jpa.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Categorie {
@@ -11,7 +11,15 @@ public class Categorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @NotBlank
     private String libelle;
+
+    @ManyToMany
+    @JoinTable(name = "TacheCategorie",
+            joinColumns = {@JoinColumn(name = "categorieId")},
+            inverseJoinColumns = {@JoinColumn(name = "tacheId")})
+    private List<Tache> taches;
 
     public Categorie() {
     }
@@ -36,11 +44,20 @@ public class Categorie {
         this.libelle = libelle;
     }
 
+//    public List<Tache> getTaches() {
+//        return taches;
+//    }
+//
+//    public void setTaches(List<Tache> taches) {
+//        this.taches = taches;
+//    }
+
     @Override
     public String toString() {
         return "Categorie{" +
                 "id=" + id +
                 ", libelle='" + libelle + '\'' +
+//                ", taches=" + taches +
                 '}';
     }
 }

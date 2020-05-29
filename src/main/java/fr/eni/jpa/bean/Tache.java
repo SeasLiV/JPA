@@ -1,5 +1,8 @@
 package fr.eni.jpa.bean;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 
 import java.util.Date;
@@ -11,17 +14,22 @@ public class Tache {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Temporal(TemporalType.DATE)
     private Date date;
+
     private String description;
     private Boolean etat;
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name = "TacheCategorie",
                 joinColumns = {@JoinColumn(name = "tacheId")},
                 inverseJoinColumns = {@JoinColumn(name = "categorieId")})
     private List<Categorie> categories;
 
     public Tache() {
+        this.etat = false;
     }
 
     public Tache(Date date, String description, Boolean etat, List<Categorie> categories) {
@@ -55,11 +63,11 @@ public class Tache {
         this.description = description;
     }
 
-    public Boolean getetat() {
+    public Boolean getEtat() {
         return etat;
     }
 
-    public void setetat(Boolean etat) {
+    public void setEtat(Boolean etat) {
         this.etat = etat;
     }
 

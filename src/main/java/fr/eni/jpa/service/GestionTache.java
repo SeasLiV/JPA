@@ -14,7 +14,7 @@ public class GestionTache {
     @Autowired
     TacheDAO dao;
 
-    public List<Tache> listeTaches() {
+    public List<Tache> listerTaches() {
         return dao.findAll();
     }
 
@@ -47,6 +47,7 @@ public class GestionTache {
             case "dateDesc": liste = dao.findByOrderByDateDesc();
             break;
             case "cat": liste = dao.findAllByCategoriesIn(cat);
+            break;
             default: liste = dao.findAll();
         }
         return liste;
