@@ -12,12 +12,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@SessionAttributes({"loggedUser"})
 public class TacheController {
 
     @Autowired
@@ -26,6 +28,7 @@ public class TacheController {
     @Autowired
     GestionTache gt;
 
+    @ModelAttribute("loggedUser")
     @RequestMapping(path = "/listerTaches", method = RequestMethod.GET)
     public ModelAndView listerTaches() {
         List<Tache> listeT = gt.listerTaches();
@@ -33,7 +36,7 @@ public class TacheController {
     }
 
     @RequestMapping(path = "/ajouterTache", method = RequestMethod.GET)
-    public ModelAndView ajouterTache(){
+    public ModelAndView ajouterTache() {
         Tache t = new Tache();
         ModelAndView mav = new ModelAndView("ajouterTache", "tache", t);
         List<Categorie> listeCategories = gc.listerCategories();
@@ -41,9 +44,9 @@ public class TacheController {
         return mav;
     }
 
-    @RequestMapping(value="/ajouterValid", method=RequestMethod.POST)
-    public ModelAndView ajoutTacheValid(@Valid @ModelAttribute("tache") Tache tache, BindingResult result){
-        if(result.hasErrors()) {
+    @RequestMapping(value = "/ajouterValid", method = RequestMethod.POST)
+    public ModelAndView ajoutTacheValid(@Valid @ModelAttribute("tache") Tache tache, BindingResult result) {
+        if (result.hasErrors()) {
             return ajouterTache();
         } else {
             gt.ajoutTache(tache);
@@ -51,8 +54,8 @@ public class TacheController {
         return listerTaches();
     }
 
-    @RequestMapping(value="/changerEtat", method=RequestMethod.GET)
-    public ModelAndView changerEtat(String index){
+    @RequestMapping(value = "/changerEtat", method = RequestMethod.GET)
+    public ModelAndView changerEtat(String index) {
         //TODO: Custom @Query plutôt que find + set + save ?
         int id = Integer.parseInt(index.substring(1));
         Tache tache = gt.trouverTache(id);
